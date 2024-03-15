@@ -35,7 +35,7 @@ class cassandra_operation:
                 self.DB_response = self.client.create_database(database_definition=database_definition)   
 
                 if connect_to_same_database==True:
-                    self.db = self.connect_to_database(api_endpoint=f"https://{self.DB_response['id']}-us-east1.apps.astra.datastax.com"
+                    self.db = self.connect_to_database(api_endpoint=f"https://{self.DB_response['id']}-us-east1.apps.astra.datastax.com")
                     return self.db
 
                 return self.DB_response 
