@@ -80,7 +80,8 @@ If you want to create a new database and connect to it seamlessly, provide your 
 con_obj = obj.create_database(
     database_name="your_database_name",
     passwd="your_database_password",
-    connect_to_same_database=True)  # Automatically connects to the created database
+    connect_to_same_database=True
+    )  # Automatically connects to the created database
 ```
 
 ### **Creating Collections**
