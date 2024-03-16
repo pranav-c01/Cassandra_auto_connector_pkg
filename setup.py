@@ -18,7 +18,7 @@ def get_requirements(file_path):
 
     return requirements
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 REPO_NAME = "Cassandra_auto_connector_pkg"
 PKG_NAME= "casdbops"
 AUTHOR_USER_NAME = "pranav-c01"
