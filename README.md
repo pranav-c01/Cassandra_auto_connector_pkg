@@ -78,12 +78,9 @@ obj = cassandra_operation("AstraCS:YOUR_CLIENT_ID:YOUR_TOKEN")
 
     If you want to create a new database and connect to it seamlessly, provide your password along with the token:
 
+
     ```Python
-    con_obj = obj.create_database(
-        database_name="your_database_name",
-        passwd="your_database_password",
-        connect_to_same_database=True  # Automatically connects to the created database
-    )
+    con_obj = obj.create_database(database_name="your_database_name",passwd="your_database_password",connect_to_same_database=True  # Automatically connects to the created database)
     ```
 
 ### **Creating Collections**
@@ -131,11 +128,8 @@ This section offers interactive code prompts to help you experiment with the lib
     obj = cassandra_operation(token)
 
     # Connect to the database
-    try:
-        con_obj = obj.connect_to_database(api_endpoint=api_endpoint)
-        print("Successfully connected to database!")
-    except Exception as e:
-        print("Connection error:", e)
+    con_obj = obj.connect_to_database(api_endpoint=api_endpoint)
+    print("Successfully connected to database!")
     ```
 - ### Prompt 2: Creating a New Database and Collection
 
@@ -149,12 +143,7 @@ This section offers interactive code prompts to help you experiment with the lib
     obj = cassandra_operation(token)
 
     # Create a new database (adjust name as needed)
-    try:
-    con_obj = obj.create_database(
-        database_name="my_new_database",
-        passwd="your_strong_password",  # Replace with a strong password
-        connect_to_same_database=True
-    )
+    con_obj = obj.create_database(database_name="my_new_database",passwd="your_strong_password",connect_to_same_database=True)
     print("Database created successfully!")
     except Exception as e:
     print("Database creation error:", e)
