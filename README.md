@@ -153,6 +153,7 @@ This section offers interactive code prompts to help you experiment with the lib
     print("Collection created:", collection_obj.name)
     ``` 
 
+
 ### **Explanation:**
 
 1.  **Replace placeholders** : Update `YOUR_CLIENT_ID:YOUR_TOKEN` with your AstraDB API token and `https://your-database-endpoint.apps.astra.datastax.com` with your database's API endpoint.
