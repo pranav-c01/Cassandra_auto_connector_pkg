@@ -52,7 +52,6 @@ Before using casdbops, you'll need an AstraDB account. Here's how to set one up:
 
 ``` Python
 from casdbops.cassandra_crud import cassandra_operation
-Use code with caution.
 ```
 
 ### **Create a casdbops object:**
@@ -68,20 +67,21 @@ obj = cassandra_operation("AstraCS:YOUR_CLIENT_ID:YOUR_TOKEN")
 >Note:-  casdbops offers two ways to connect to a database:
 
 1. ### Manual API Endpoint:
+If you already have a database created, provide its API endpoint directly:
 
-    If you already have a database created, provide its API endpoint directly:
-
-    ```Python
-    con_obj = obj.connect_to_database(api_endpoint="[https://your-database-endpoint.apps.astra.datastax.com](https://your-database-endpoint.apps.astra.datastax.com)")
-    ```
+```Python
+con_obj = obj.connect_to_database(api_endpoint="[https://your-database-endpoint.apps.astra.datastax.com](https://your-database-endpoint.apps.astra.datastax.com)")
+```
 2. ### Automatic Creation and Connection:
+If you want to create a new database and connect to it seamlessly, provide your password along with the token:
 
-    If you want to create a new database and connect to it seamlessly, provide your password along with the token:
 
-
-    ```Python
-    con_obj = obj.create_database(database_name="your_database_name",passwd="your_database_password",connect_to_same_database=True  # Automatically connects to the created database)
-    ```
+```Python
+con_obj = obj.create_database(
+    database_name="your_database_name",
+    passwd="your_database_password",
+    connect_to_same_database=True)  # Automatically connects to the created database
+```
 
 ### **Creating Collections**
 
@@ -115,43 +115,52 @@ This section offers interactive code prompts to help you experiment with the lib
 
 - ### Prompt 1: Connecting to an Existing Database
 
-    ```Python
-    # Replace with your AstraDB API token
-    token = "YOUR_CLIENT_ID:YOUR_TOKEN"
+```Python
+# Replace with your AstraDB API token
+token = "YOUR_CLIENT_ID:YOUR_TOKEN"
 
-    # Replace with your database API endpoint
-    api_endpoint = "[https://your-database-endpoint.apps.astra.datastax.com](https://your-database-endpoint.apps.astra.datastax.com)"
+# Replace with your database API endpoint
+api_endpoint = "[https://your-database-endpoint.apps.astra.datastax.com](https://your-database-endpoint.apps.astra.datastax.com)"
 
-    from casdbops.cassandra_crud import cassandra_operation
+from casdbops.cassandra_crud import cassandra_operation
 
-    # Create a casdbops object
-    obj = cassandra_operation(token)
+# Create a casdbops object
+obj = cassandra_operation(token)
 
-    # Connect to the database
+# Connect to the database
+try:
     con_obj = obj.connect_to_database(api_endpoint=api_endpoint)
     print("Successfully connected to database!")
-    ```
+except Exception as e:
+    print("Connection error:", e)
+```
+
 - ### Prompt 2: Creating a New Database and Collection
 
-    ```python
-    # Replace with your AstraDB API token
-    token = "YOUR_CLIENT_ID:YOUR_TOKEN"
+```python
+# Replace with your AstraDB API token
+token = "YOUR_CLIENT_ID:YOUR_TOKEN"
 
-    from casdbops.cassandra_crud import cassandra_operation
+from casdbops.cassandra_crud import cassandra_operation
 
-    # Create a casdbops object
-    obj = cassandra_operation(token)
+# Create a casdbops object
+obj = cassandra_operation(token)
 
-    # Create a new database (adjust name as needed)
-    con_obj = obj.create_database(database_name="my_new_database",passwd="your_strong_password",connect_to_same_database=True)
+# Create a new database (adjust name as needed)
+try:
+    con_obj = obj.create_database(
+        database_name="my_new_database",
+        passwd="your_strong_password",
+        connect_to_same_database=True
+        )
     print("Database created successfully!")
-    except Exception as e:
+except Exception as e:
     print("Database creation error:", e)
 
-    # Create a collection within the new database
-    collection_obj = obj.create_collection("my_collection")
-    print("Collection created:", collection_obj.name)
-    ``` 
+# Create a collection within the new database
+collection_obj = obj.create_collection("my_collection")
+print("Collection created:", collection_obj.name)
+``` 
 
 
 ### **Explanation:**
